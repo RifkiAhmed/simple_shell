@@ -1,2 +1,5 @@
-this is readme file for simple shell for team by:
- eddiani iqbal and Ahmed fikri
+This is C-simple_shell project :
+ 
+# Team :
+	. Eddiani iqbal
+	. Ahmed rifki
