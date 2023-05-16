@@ -23,7 +23,7 @@ int main(int ac, char **av)
 
 		read_char = getline(&lineptr, &n, stdin);
 		if (read_char != -1)
-			write(1, lineptr, read_char);
+			write(STDOUT_FILENO, lineptr, read_char);
 		else
 			return (-1);
 	}
