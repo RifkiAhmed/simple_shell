@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	(void)ac;
 	(void)av;
 
-	while(1)
+	while (1)
 	{
 		write(STDOUT_FILENO, "IA $: ", 6);
 
