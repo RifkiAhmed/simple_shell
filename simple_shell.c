@@ -27,5 +27,6 @@ int main(int ac, char **av)
 		else
 			return (-1);
 	}
+	free(lineptr);
 	return (0);
 }
