@@ -28,9 +28,8 @@ int main(int argc, char **argv, char **env)
 		write(STDOUT_FILENO, "$ ", 2);
 		chars = getline(&lineptr, &n, stdin);
 
-		if (chars == EOF)
+		if (chars == -1)
 		{
-			free(argv);
 			free(lineptr);
 			return (-1);
 		}
@@ -50,6 +49,7 @@ int main(int argc, char **argv, char **env)
 		{
 			wait(NULL);
 		}
+		free(argv);
 	}
 	return (0);
 }
