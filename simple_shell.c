@@ -20,6 +20,7 @@ int main(int argc, char **argv, char **env)
 	ssize_t chars;
 	pid_t pid;
 
+	(void)argc;
 	n = 0;
 	lineptr = NULL;
 	while (1)
