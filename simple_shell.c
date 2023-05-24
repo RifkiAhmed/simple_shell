@@ -25,7 +25,10 @@ int main(int argc, char **argv, char **env)
 	lineptr = NULL;
 	while (1)
 	{
-		write(STDOUT_FILENO, "$ ", 2);
+		if (isatty(0))
+		{
+			write(STDOUT_FILENO, "$ ", 2);
+		}
 		chars = getline(&lineptr, &n, stdin);
 
 		if (chars == -1)
