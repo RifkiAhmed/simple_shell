@@ -22,7 +22,7 @@ int main()
 
 	n = 0;
 	lineptr = NULL;
-	while (1)
+	while (chars != EOF)
 	{
 		if (isatty(0))
 		{
@@ -54,5 +54,7 @@ int main()
 		}
 		free(argv);
 	}
+	free(argv);
+	free(lineptr);
 	return (0);
 }
