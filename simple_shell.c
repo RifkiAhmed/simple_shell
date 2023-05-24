@@ -13,14 +13,13 @@
  * Return: 0
  */
 
-int main(int argc, char **argv)
+int main()
 {
-	char *lineptr;
+	char *lineptr, **argv;
 	size_t n;
 	ssize_t chars;
 	pid_t pid;
 
-	(void)argc;
 	n = 0;
 	lineptr = NULL;
 	while (1)
