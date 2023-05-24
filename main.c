@@ -41,7 +41,9 @@ int main(void)
 			}
 			exit(0);
 		}
-		argv = tokenize(lineptr, "\n");
+		argv = malloc(sizeof(char *) * 2);
+		argv[0] = strtok(lineptr, "\n");
+		argv[1] = NULL;;
 		execut(argv);
 	}
 	free(lineptr);
