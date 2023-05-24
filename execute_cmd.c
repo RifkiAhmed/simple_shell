@@ -52,7 +52,7 @@ char **splitstring(char *str, const char *delim)
  * @argv: array of arguments
  */
 
-void execute(char * lineptr, char **argv)
+void execute(char *lineptr, char **argv)
 {
 
 	int d, status;

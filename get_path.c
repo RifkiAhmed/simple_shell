@@ -110,11 +110,11 @@ list_path *linkpath(char *path)
 char *_which(char *filename)
 {
 	struct stat st;
-	
+
 	if (stat(filename, &st) == 0)
-		{
-			return (filename);
-		}
+	{
+		return (filename);
+	}
 
 	return (NULL);
 }
@@ -134,5 +134,4 @@ void free_list(list_path *head)
 		free(head);
 		head = storage;
 	}
-
 }

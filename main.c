@@ -46,24 +46,27 @@ void _isatty(void)
 
 int main (void)
 {
-	ssize_t len = 0;
-	char *buff = NULL, **arv;
-	size_t size = 0;
+    ssize_t len = 0;
+    char *buff = NULL, **arv;
+    size_t size = 0;
 
-	signal(SIGINT, sig_handler);
-	while (len != EOF)
-	{
+    signal(SIGINT, sig_handler);
+    while (len != EOF)
+    {
 		_isatty();
 		len = getline(&buff, &size, stdin);
 		_EOF(len, buff);
 		arv = splitstring(buff, "\n");
 		if (!arv || !arv[0])
+		{
 			execute(arv);
+		}
 		else
 		{
 			execute(arv);
 		}
 		freearv(arv);
+		free(buff);
 	}
 	freearv(arv);
 	return (0);
