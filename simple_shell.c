@@ -32,7 +32,7 @@ int main(int argc, char **argv, char **env)
 		{
 			free(argv);
 			free(lineptr);
-			exit(EXIT_SUCCESS);
+			return (-1);
 		}
 
 		argv = malloc(sizeof(char *) * 1024);
