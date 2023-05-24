@@ -1,32 +1,54 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <sys/wait.h>
 
 /**
  * main - test code
- * @ac: argument counter
- * @av: array of string, each string is one of the arguments
+ * @argc: arguments counter
+ * @argv: array of string, each string is one of the arguments
  *
  * Return: 0
  */
-int main(int ac, char **av)
+
+int main(int argc, char **argv, char **env)
 {
 	char *lineptr;
-	size_t n = 0;
-	int read_char;
-	(void)ac;
-	(void)av;
+	size_t n;
+	ssize_t chars;
+	pid_t pid;
 
+
+	n = 0;
+	lineptr = NULL;
 	while (1)
 	{
-		write(STDOUT_FILENO, "IA $: ", 6);
+		write(STDOUT_FILENO, "$ ", 2);
+		chars = getline(&lineptr, &n, stdin);
 
-		read_char = getline(&lineptr, &n, stdin);
-		if (read_char != -1)
-			write(STDOUT_FILENO, lineptr, read_char);
+		if (chars == EOF)
+		{
+			free(argv);
+			free(lineptr);
+			exit(EXIT_SUCCESS);
+		}
+
+		argv = malloc(sizeof(char *) * 1024);
+		argv[0] = strtok(lineptr, " \n\t\0");
+		argv[1] = NULL;
+		pid = fork();
+		if (pid == 0)
+		{
+			if (execve(argv[0], argv, env) == -1)
+			{			
+				perror("./hsh");
+			}
+		}
 		else
-			return (-1);
+		{
+			wait(NULL);
+		}
 	}
-	free(lineptr);
 	return (0);
 }
