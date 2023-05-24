@@ -58,7 +58,10 @@ void execute(char **argv)
 	int d, status;
 
 	if (!argv || !argv[0])
+	{
+		freearv(argv);
 		return;
+	}
 	d = fork();
 	if (d == -1)
 	{
