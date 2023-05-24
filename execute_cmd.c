@@ -52,13 +52,14 @@ char **splitstring(char *str, const char *delim)
  * @argv: array of arguments
  */
 
-void execute(char **argv)
+void execute(char * lineptr, char **argv)
 {
 
 	int d, status;
 
 	if (!argv || !argv[0])
 	{
+		free(lineptr);
 		freearv(argv);
 		return;
 	}
