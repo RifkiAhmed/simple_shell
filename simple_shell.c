@@ -13,7 +13,7 @@
  * Return: 0
  */
 
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv)
 {
 	char *lineptr;
 	size_t n;
@@ -38,12 +38,12 @@ int main(int argc, char **argv, char **env)
 		}
 
 		argv = malloc(sizeof(char *) * 1024);
-		argv[0] = strtok(lineptr, "\n\0");
+		argv[0] = strtok(lineptr, "\n");
 		argv[1] = NULL;
 		pid = fork();
 		if (pid == 0)
 		{
-			if (execve(argv[0], argv, env) == -1)
+			if (execve(argv[0], argv, NULL) == -1)
 			{
 				perror("./hsh");
 			}
