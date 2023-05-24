@@ -63,6 +63,8 @@ int main (void)
 		{
 			execute(arv);
 		}
+		freearv(arv);
+		free(buff);
 	}
 	freearv(arv);
 	free(buff);
