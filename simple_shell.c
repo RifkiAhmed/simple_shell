@@ -28,6 +28,7 @@ int main()
 		{
 			write(STDOUT_FILENO, "$ ", 2);
 		}
+		fflush(stdout);
 		chars = getline(&lineptr, &n, stdin);
 
 		if (chars == -1)
