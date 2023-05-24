@@ -2,73 +2,72 @@
 
 
 /**
- * tokenize - splits a string
- * @lineptr: the string to be split
- * @delim: delimiter
- * 
- * Return: array of pointers
+ * splitstring - splits a string and makes it an array of pointers to words
+ * @str: the string to be split
+ * @delim: the delimiter
+ * Return: array of pointers to words
  */
 
-char **tokenize(char *lineptr, const char *delim)
+char **splitstring(char *str, const char *delim)
 {
-	int i, size;
-	char **tokens;
+	int i, wn;
+	char **array;
 	char *token;
 	char *copy;
 
-	copy = malloc(_strlen(lineptr) + 1);
+	copy = malloc(_strlen(str) + 1);
 	if (copy == NULL)
 	{
-		perror("./hsh");
+		perror(_getenv("_"));
 		return (NULL);
 	}
 	i = 0;
-	while (lineptr[i])
+	while (str[i])
 	{
-		copy[i] = lineptr[i];
+		copy[i] = str[i];
 		i++;
 	}
 	copy[i] = '\0';
 
 	token = strtok(copy, delim);
-	tokens = malloc((sizeof(char *) * 2));
-	tokens[0] = _strdup(token);
+	array = malloc((sizeof(char *) * 2));
+	array[0] = _strdup(token);
 
 	i = 1;
-	size = 3;
+	wn = 3;
 	while (token)
 	{
 		token = strtok(NULL, delim);
-		tokens = _realloc(tokens, (sizeof(char *) * (size - 1)), (sizeof(char *) * size));
-		tokens[i] = _strdup(token);
+		array = _realloc(array, (sizeof(char *) * (wn - 1)), (sizeof(char *) * wn));
+		array[i] = _strdup(token);
 		i++;
-		size++;
+		wn++;
 	}
 	free(copy);
-	return (tokens);
+	return (array);
 }
 
 /**
- * execut - executes a command
- * @argv: array of argument
+ * execute - executes a command
+ * @argv: array of arguments
  */
 
-void execut(char **argv)
+void execute(char **argv)
 {
 
-	pid_t pid, status;
+	int d, status;
 
 	if (!argv || !argv[0])
 		return;
-	pid = fork();
-	if (pid == -1)
+	d = fork();
+	if (d == -1)
 	{
-		perror("./hsh");
+		perror(_getenv("_"));
 	}
-	if (pid == 0)
+	if (d == 0)
 	{
 		execve(argv[0], argv, environ);
-			perror("./hsh");
+			perror(argv[0]);
 		exit(EXIT_FAILURE);
 	}
 	wait(&status);
@@ -76,12 +75,12 @@ void execut(char **argv)
 
 /**
  * _realloc - Reallocates memory block
- * @new_size: previous pointer
- * @old_size: old size
- * @new: new size
- * 
- * Return: Pointer
+ * @ptr: previous pointer
+ * @old_size: old size of previous pointer
+ * @new_size: new size for our pointer
+ * Return: New resized Pointer
  */
+
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	char *new;
@@ -124,15 +123,15 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * free_argv - frees the array
- *@argv: array of pointers
+ * freearv - frees the array of pointers arv
+ *@arv: array of pointers
  */
 
-void free_argv(char **argv)
+void freearv(char **arv)
 {
 	int i;
 
-	for (i = 0; argv[i]; i++)
-		free(argv[i]);
-	free(argv);
+	for (i = 0; arv[i]; i++)
+		free(arv[i]);
+	free(arv);
 }

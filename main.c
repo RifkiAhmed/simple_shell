@@ -1,52 +1,89 @@
 #include "main.h"
 
 /**
- * f_handler - checks if ctrl-c is pressed
- * @sig: int
+ * sig_handler - checks if Ctrl C is pressed
+ * @sig_num: int
  */
-void f_handler(int sig)
+void sig_handler(int sig_num)
 {
-	if (sig == SIGINT)
+	if (sig_num == SIGINT)
 	{
-		write(STDOUT_FILENO, "\n$ ", 3);
+		_puts("\n$ ");
 	}
 }
 
 /**
- * main - check code
- * 
- * Return: 0
+* _EOF - handles the End of File
+* @len: return value of getline function
+* @buff: buffer
+ */
+void _EOF(int len, char *buff)
+{
+	(void)buff;
+	if (len == -1)
+	{
+		if (isatty(STDIN_FILENO))
+		{
+			_puts("\n");
+			free(buff);
+		}
+		exit(0);
+	}
+}
+/**
+  * _isatty - verif if terminal
+  */
+
+void _isatty(void)
+{
+	if (isatty(STDIN_FILENO))
+		_puts("$ ");
+}
+/**
+ * main - Shell
+ * Return: 0 on success
  */
 
 int main(void)
 {
-	char *lineptr = NULL, **argv;
-	size_t n = 0;
-	ssize_t chars = 0;
+	ssize_t len = 0;
+	char *buff = NULL, *value, *pathname, **arv;
+	size_t size = 0;
+	list_path *head = '\0';
+	void (*f)(char **);
 
-	signal(SIGINT, f_handler);
-	while (chars != EOF)
+	signal(SIGINT, sig_handler);
+	while (len != EOF)
 	{
-		if (isatty(STDIN_FILENO))
+		_isatty();
+		len = getline(&buff, &size, stdin);
+		_EOF(len, buff);
+		arv = splitstring(buff, "\n");
+		if (!arv || !arv[0])
+			execute(arv);
+		else
 		{
-			write(STDOUT_FILENO, "$ ", 2);
-		}
-		chars = getline(&lineptr, &n, stdin);
-		if (chars == -1)
-		{
-			if (isatty(STDIN_FILENO))
+			value = _getenv("PATH");
+			head = linkpath(value);
+			pathname = _which(arv[0], head);
+			f = checkbuild(arv);
+			if (f)
 			{
-				write(STDOUT_FILENO, "\n", 1);
-				free(lineptr);
+				free(buff);
+				f(arv);
 			}
-			exit(0);
+			else if (!pathname)
+				execute(arv);
+			else if (pathname)
+			{
+				free(arv[0]);
+				arv[0] = pathname;
+				execute(arv);
+			}
 		}
-		argv = malloc(sizeof(char *) * 2);
-		argv[0] = strtok(lineptr, "\n");
-		argv[1] = NULL;;
-		execut(argv);
 	}
-	free(lineptr);
-	free_argv(argv);
+	free_list(head);
+	freearv(arv);
+	free(buff);
 	return (0);
 }
