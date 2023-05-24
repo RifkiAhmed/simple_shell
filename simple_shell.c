@@ -36,7 +36,7 @@ int main(int argc, char **argv, char **env)
 		}
 
 		argv = malloc(sizeof(char *) * 1024);
-		argv[0] = strtok(lineptr, "\t\n\0");
+		argv[0] = strtok(lineptr, "\n\0");
 		argv[1] = NULL;
 		pid = fork();
 		if (pid == 0)
