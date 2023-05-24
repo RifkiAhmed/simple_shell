@@ -8,6 +8,7 @@
  * main - test code
  * @argc: arguments counter
  * @argv: array of string, each string is one of the arguments
+ * @env: envirnment variable
  *
  * Return: 0
  */
@@ -18,7 +19,6 @@ int main(int argc, char **argv, char **env)
 	size_t n;
 	ssize_t chars;
 	pid_t pid;
-
 
 	n = 0;
 	lineptr = NULL;
@@ -41,7 +41,7 @@ int main(int argc, char **argv, char **env)
 		if (pid == 0)
 		{
 			if (execve(argv[0], argv, env) == -1)
-			{			
+			{
 				perror("./hsh");
 			}
 		}
