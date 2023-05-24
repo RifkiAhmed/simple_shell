@@ -107,24 +107,14 @@ list_path *linkpath(char *path)
  * @head: head of linked list of path directories
  * Return: pathname of filename or NULL if no match
  */
-char *_which(char *filename, list_path *head)
+char *_which(char *filename)
 {
 	struct stat st;
-	char *string;
-
-	list_path *tmp = head;
-
-	while (tmp)
-	{
-
-		string = concat_all(tmp->dir, "/", filename);
-		if (stat(string, &st) == 0)
+	
+	if (stat(filename, &st) == 0)
 		{
-			return (string);
+			return (filename);
 		}
-		free(string);
-		tmp = tmp->p;
-	}
 
 	return (NULL);
 }

@@ -44,13 +44,11 @@ void _isatty(void)
  * Return: 0 on success
  */
 
-int main(void)
+int main (void)
 {
 	ssize_t len = 0;
-	char *buff = NULL, *value, *pathname, **arv;
+	char *buff = NULL, **arv;
 	size_t size = 0;
-	list_path *head = '\0';
-	void (*f)(char **);
 
 	signal(SIGINT, sig_handler);
 	while (len != EOF)
@@ -63,26 +61,9 @@ int main(void)
 			execute(arv);
 		else
 		{
-			value = _getenv("PATH");
-			head = linkpath(value);
-			pathname = _which(arv[0], head);
-			f = checkbuild(arv);
-			if (f)
-			{
-				free(buff);
-				f(arv);
-			}
-			else if (!pathname)
-				execute(arv);
-			else if (pathname)
-			{
-				free(arv[0]);
-				arv[0] = pathname;
-				execute(arv);
-			}
+			execute(arv);
 		}
 	}
-	free_list(head);
 	freearv(arv);
 	free(buff);
 	return (0);

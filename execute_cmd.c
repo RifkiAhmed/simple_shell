@@ -18,7 +18,7 @@ char **splitstring(char *str, const char *delim)
 	copy = malloc(_strlen(str) + 1);
 	if (copy == NULL)
 	{
-		perror(_getenv("_"));
+		perror("./hsh");
 		return (NULL);
 	}
 	i = 0;
@@ -62,12 +62,12 @@ void execute(char **argv)
 	d = fork();
 	if (d == -1)
 	{
-		perror(_getenv("_"));
+		perror("./hsh");
 	}
 	if (d == 0)
 	{
 		execve(argv[0], argv, environ);
-			perror(argv[0]);
+			perror("./hsh");
 		exit(EXIT_FAILURE);
 	}
 	wait(&status);
