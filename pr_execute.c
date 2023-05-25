@@ -3,7 +3,7 @@
 /**
  * _builtin - execute bultin program
  * @argv: argument vector
- * 
+ *
  * Return: void
  */
 void _builtin(char **argv)
@@ -43,7 +43,7 @@ break;
 /**
  * toknize - thom argv function
  * @lineptr: user input
- * 
+ *
  * Return: pointer of strings
  */
 char **toknize(char *lineptr)
