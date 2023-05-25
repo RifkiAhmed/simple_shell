@@ -59,15 +59,14 @@ int main(void)
 		arv = splitstring(buff, "\n");
 		if (!arv || !arv[0])
 		{
-			execute(arv);
+			execute(buff, arv);
 		}
 		else
 		{
-			execute(arv);
+			execute(buff, arv);
 		}
-		freearv(arv);
-		free(buff);
 	}
 	freearv(arv);
+	free(buff);
 	return (0);
 }
