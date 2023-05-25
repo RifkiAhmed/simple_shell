@@ -7,9 +7,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-
 extern char **environ;
-char **hd;
 void run(void);
 void exec_cmd(char **argv);
 void _execve(char **argv);
