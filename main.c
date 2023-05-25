@@ -31,7 +31,7 @@ if (strcmp(argv[0], "exit") == 0)
 {
 exit(EXIT_SUCCESS);
 }
-else
+else if (argv)
 {
 exec_cmd(argv);
 }
