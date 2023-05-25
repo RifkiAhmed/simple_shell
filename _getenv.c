@@ -4,7 +4,7 @@
  * _getenv - searches for value of the variable key envirnment 
  * @key: key
  * 
- * Return: value of the kay
+ * Return: value of the key if exist
  */
 
 char *_getenv(const char *key)
