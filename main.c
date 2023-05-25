@@ -5,6 +5,7 @@
  * 
  * Return: 0
  */
+
 int main(void)
 {
 char *lineptr = NULL, **argv;
@@ -27,11 +28,13 @@ if (!argv[0])
 free_argv(argv);
 continue;
 }
-if (strcmp(argv[0], "exit") == 0)
+if (strcmp(argv[0], "exit") == 0 ||
+strcmp(argv[0], "cd") == 0 ||
+strcmp(argv[0], "env") == 0)
 {
-exit(EXIT_SUCCESS);
+_builtin(argv);
 }
-else if (argv)
+else
 {
 exec_cmd(argv);
 }
