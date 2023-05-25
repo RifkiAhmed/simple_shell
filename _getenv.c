@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _getenv - searches for value of the variable key envirnment 
+ * _getenv - searches for value of the variable key envirnment
  * @key: key
- * 
+ *
  * Return: value of the key if exist
  */
 
