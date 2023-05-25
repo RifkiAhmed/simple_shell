@@ -1,23 +1,5 @@
 #include "main.h"
 
-#define BUFF_SSIZE 4096
-#define IMAX_ARGS 258
-
-/**
- * free_argv - Free argv pointer of pointer
- * @argv: arguments vector
- * 
- * Return: void
- */
-void free_argv(char **argv)
-{
-int i;
-for (i = 0; argv[i]; i++)
-{
-free(argv[i]);
-}
-free(argv);
-}
 /**
  * _builtin - execute bultin program
  * @argv: argument vector
@@ -66,16 +48,32 @@ break;
  */
 char **toknize(char *lineptr)
 {
-char **argv = malloc(IMAX_ARGS * sizeof(char *));
+char **argv = malloc(258 * sizeof(char *));
 char *token;
 int i = 0;
 
 token = strtok(lineptr, " \t\n");
-while (token != NULL && i < IMAX_ARGS)
+while (token != NULL && i < 258)
 {
 argv[i++] = strdup(token);
 token = strtok(NULL, " \t\n");
 }
 argv[i] = NULL;
 return (argv);
+}
+
+/**
+ * free_argv - Free argv pointer of pointer
+ * @argv: arguments vector
+ * 
+ * Return: void
+ */
+void free_argv(char **argv)
+{
+int i;
+for (i = 0; argv[i]; i++)
+{
+free(argv[i]);
+}
+free(argv);
 }
