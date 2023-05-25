@@ -3,7 +3,7 @@
 /**
  * exec_cmd - program execute
  * @argv: argumments vector
- * 
+ *
  * Return: void
  */
 
@@ -25,7 +25,7 @@ waitpid(pid, NULL, 0);
 /**
  * _execve - program execute
  * @argv: arguments vector
- * 
+ *
  * Return: void
  */
 void _execve(char **argv)
