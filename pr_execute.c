@@ -48,10 +48,11 @@ break;
  */
 char **toknize(char *lineptr)
 {
-char **argv = malloc(258 * sizeof(char *));
+char **argv;
 char *token;
 int i = 0;
 
+argv = malloc(258 * sizeof(char *));
 token = strtok(lineptr, " \t\n");
 while (token != NULL && i < 258)
 {
