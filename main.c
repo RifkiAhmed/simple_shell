@@ -44,15 +44,15 @@ void _isatty(void)
  * Return: 0 on success
  */
 
-int main (void)
+int main(void)
 {
-    ssize_t len = 0;
-    char *buff = NULL, **arv;
-    size_t size = 0;
+	ssize_t len = 0;
+	char *buff = NULL, **arv;
+	size_t size = 0;
 
-    signal(SIGINT, sig_handler);
-    while (len != EOF)
-    {
+	signal(SIGINT, sig_handler);
+	while (len != EOF)
+	{
 		_isatty();
 		len = getline(&buff, &size, stdin);
 		_EOF(len, buff);

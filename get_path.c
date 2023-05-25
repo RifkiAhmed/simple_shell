@@ -104,7 +104,7 @@ list_path *linkpath(char *path)
 /**
  * _which - finds the pathname of a filename
  * @filename: name of file or command
- * @head: head of linked list of path directories
+ *
  * Return: pathname of filename or NULL if no match
  */
 char *_which(char *filename)

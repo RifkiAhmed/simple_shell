@@ -49,6 +49,7 @@ char **splitstring(char *str, const char *delim)
 
 /**
  * execute - executes a command
+ * @lineptr: pointer
  * @argv: array of arguments
  */
 
