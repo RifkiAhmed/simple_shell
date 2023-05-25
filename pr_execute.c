@@ -14,7 +14,7 @@ return;
 }
 if (strcmp(argv[0], "exit") == 0)
 {
-exit(0);
+exit(EXIT_SUCCESS);
 }
 else if (strcmp(argv[0], "cd") == 0)
 {
