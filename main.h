@@ -11,7 +11,6 @@ extern char **environ;
 void exec_cmd(char **argv);
 void _execve(char **argv);
 char **toknize(char *lineptr);
-int check_builtin(char **argv);
 void _builtin(char **argv);
 void free_argv(char **argv);
 char *_getenv(const char *key);

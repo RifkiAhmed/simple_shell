@@ -57,18 +57,7 @@ break;
 }
 }
 }
-/**
- * check - checks for bultin function
- * @argv: argument element
- * 
- * Return: 1 or 0
- */
-int check_builtin(char **argv)
-{
-return (strcmp(argv[0], "exit") == 0 ||
-strcmp(argv[0], "cd") == 0 ||
-strcmp(argv[0], "env") == 0);
-}
+
 /**
  * toknize - thom argv function
  * @lineptr: user input
