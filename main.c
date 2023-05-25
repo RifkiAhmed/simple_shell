@@ -56,7 +56,9 @@ int main(void)
 		_isatty();
 		len = getline(&buff, &size, stdin);
 		_EOF(len, buff);
-		arv = splitstring(buff, "\n");
+		arv = malloc(sizeof(char *) * 2);
+		arv[0] = strtok(buff, "\n");
+		arv[1] = NULL;
 		if (!arv || !arv[0])
 		{
 			execute(buff, arv);
