@@ -8,7 +8,7 @@ void sig_handler(int sig_num)
 {
 	if (sig_num == SIGINT)
 	{
-		_puts("\n$ ");
+		write(1, "\n$ ", 3);
 	}
 }
 
@@ -24,7 +24,7 @@ void _EOF(int len, char *buff)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			_puts("\n");
+			write(1, "\n", 1);
 			free(buff);
 		}
 		exit(0);
@@ -37,7 +37,7 @@ void _EOF(int len, char *buff)
 void _isatty(void)
 {
 	if (isatty(STDIN_FILENO))
-		_puts("$ ");
+		write(1, "$ ", 2);
 }
 /**
  * main - Shell
@@ -59,16 +59,8 @@ int main(void)
 		arv = malloc(sizeof(char *) * 2);
 		arv[0] = strtok(buff, "\n");
 		arv[1] = NULL;
-		if (!arv || !arv[0])
-		{
-			execute(buff, arv);
-		}
-		else
-		{
-			execute(buff, arv);
-		}
+		execute(buff, arv);
 	}
 	freearv(arv);
-	free(buff);
 	return (0);
 }
