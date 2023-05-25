@@ -2,18 +2,16 @@
 
 /**
  * main - run code
- * @argc: arguments number
- * @argv: argument vector
  * 
  * Return: 0
  */
 
 int main(void)
 {
-char *lineptr = NULL;
-char **argv;
+char *lineptr = NULL, **argv;
 size_t n = 0;
 ssize_t chars_n;
+
 while (1)
 {
 if (isatty(0))
