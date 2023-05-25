@@ -31,8 +31,6 @@ waitpid(pid, NULL, 0);
 void _execve(char **argv)
 {
 char *token, *path, *value, *command;
-char *error_m;
-size_t len;
 int i;
 
 for (i = 0; argv[i]; i++)
@@ -59,10 +57,6 @@ execve(path, argv, environ);
 free(path);
 token = strtok(NULL, ":");
 }
-error_m = malloc(strlen(command) + 21);
-sprintf(error_m, "sh: 1: %s: not found\n", command);
-len = strlen(error_m);
-write(STDERR_FILENO, error_m, len);
-free(error_m);
+perror("./hsh");
 }
 }
