@@ -66,7 +66,7 @@ return (argv);
 /**
  * free_argv - Free argv pointer of pointer
  * @argv: arguments vector
- * 
+ *
  * Return: void
  */
 void free_argv(char **argv)
