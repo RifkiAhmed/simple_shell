@@ -27,11 +27,9 @@ if (!argv[0])
 free_argv(argv);
 continue;
 }
-if (strcmp(argv[0], "exit") == 0 ||
-strcmp(argv[0], "cd") == 0 ||
-strcmp(argv[0], "env") == 0)
+if (strcmp(argv[0], "exit") == 0)
 {
-_builtin(argv);
+exit(EXIT_SUCCESS);
 }
 else
 {
