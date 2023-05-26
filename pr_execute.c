@@ -18,7 +18,11 @@ exit(EXIT_SUCCESS);
 }
 else if (strcmp(argv[0], "cd") == 0)
 {
-_cd(argv);
+const char *di = argv[1] ? argv[1] : _getenv("HOME");
+if (chdir(di) != 0)
+{
+perror("cd");
+}
 }
 else if (strcmp(argv[0], "env") == 0)
 {
