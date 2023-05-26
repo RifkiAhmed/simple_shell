@@ -19,5 +19,6 @@ void free_argv(char **argv);
 void _cd(char **argv);
 void _exit(char **argv);
 void _setenv(char **argv);
+void _unsetenv(char **argv);
 
 #endif
