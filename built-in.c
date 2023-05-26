@@ -30,10 +30,16 @@ return;
  * Return: void
  */
 
-void _exit(char **argv) {
-if (argv[1] != NULL) {
-perror("./hsh");
-exit(EXIT_FAILURE);
-} else {
-exit(EXIT_SUCCESS);
+void _exit(char **argv)
+{
+	if (argv[1] != NULL)
+	{
+		perror("./hsh");
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		exit(EXIT_SUCCESS);
+	}
+}
 
