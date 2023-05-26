@@ -43,3 +43,21 @@ void _exit(char **argv)
 	}
 }
 
+/**
+ * _setenv - program that initialize new environment variable,
+ * or modify an existing one
+ * @argv: argumments vector
+ *
+ * Return: void
+ */
+
+void _setenv(char **argv) {
+if (argv[1] == NULL || argv[2] == NULL) {
+perror("./hsh");
+return;
+}
+
+
+setenv(argv[1], argv[2], 1);
+}
+
