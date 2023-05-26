@@ -17,5 +17,5 @@ void _builtin(char **argv);
 char *_getenv(const char *key);
 void free_argv(char **argv);
 void _cd(char **argv);
-void _exit(char **argv);
+
 #endif
