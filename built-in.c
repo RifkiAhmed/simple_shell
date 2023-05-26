@@ -61,20 +61,3 @@ void _setenv(char **argv)
 	setenv(argv[1], argv[2], 1);
 }
 
-/**
- * _unsetenv - Remove an environment variable
- * @argv: argumments vector
- *
- * Return: void
- */
-
-void _unsetenv(char **argv) {
-if (argv[1] == NULL) {
-perror("./hsh");
-return;
-}
-
-
-unsetenv(argv[1]);
-}
-
