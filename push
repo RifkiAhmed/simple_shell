@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "Fix betty checks"
+git commit -m "$m"
 git push
