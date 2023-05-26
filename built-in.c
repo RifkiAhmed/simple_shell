@@ -51,13 +51,13 @@ void _exit(char **argv)
  * Return: void
  */
 
-void _setenv(char **argv) {
-if (argv[1] == NULL || argv[2] == NULL) {
-perror("./hsh");
-return;
-}
-
-
-setenv(argv[1], argv[2], 1);
+void _setenv(char **argv)
+{
+	if (argv[1] == NULL || argv[2] == NULL)
+	{
+		perror("./hsh");
+		return;
+	}
+	setenv(argv[1], argv[2], 1);
 }
 
