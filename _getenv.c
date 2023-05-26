@@ -2,7 +2,7 @@
 
 /**
  * _getenv - searches for value of the variable key envirnment
- * @key: key
+ * @key: argument
  *
  * Return: value of the key if exist
  */
